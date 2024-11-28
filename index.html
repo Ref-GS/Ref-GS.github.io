@@ -1,3 +1,513 @@
+
+<!DOCTYPE html>
+<html>
+
 <head>
-  <meta http-equiv='refresh' content='0; URL=http://dorverbin.github.io/nerf-casting'>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="NeRF-Casting">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ref-GS</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/video_comparison.js" defer></script>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+
 </head>
+
+<body>
+
+<section class="hero">
+<div class="hero-body">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column has-text-centered">
+
+        <h1 class="title is-1 publication-title">
+<!--             <img src='./static/imgs/logo.png' width=4%>  -->
+            <font color="#f72585">R</font><font color="#b5179e">e</font><font color="#7209b7">f</font><font color="#560bad">-</font><font color="#480ca8">G</font><font color="#3a0ca3">S</font>
+            : Directional Factorization for <br> 2D Gaussian Splatting
+        </h1>
+        <br>
+
+        <div class="is-size-4 publication-authors">
+          <span class="author-block">Anonymous Author(s)</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+    
+
+  <section class="section">
+    <div class="container is-max-desktop">
+<!--       <img src="./static/imgs/teaser.svg" alt="WildGaussians overview" style="width: 100%; margin: 1em auto 0.3em auto; display: block;" /> -->
+      <br>
+      <!-- Abstract. -->
+      <h2 class="title is-3">Abstract</h2>
+      <div class="content has-text-justified">
+          <p>
+              In this paper, we introduce Ref-GS, a novel approach for directional light factorization in 2D Gaussian splatting, which enables photorealistic view-dependent appearance rendering and precise geometry recovery. Ref-GS builds upon the deferred rendering of Gaussian splatting and applies directional encoding to the deferred-rendered surface, effectively reducing the ambiguity between orientation and viewing angle. Next, we introduce a spherical mip-grid to capture varying levels of surface roughness, enabling roughness-aware Gaussian shading. Additionally, we propose a simple yet efficient geometry-lighting factorization that connects geometry and lighting via the vector outer product, significantly reducing renderer overhead when integrating volumetric attributes. Our method achieves superior photorealistic rendering for a range of open-world scenes while also accurately recovering geometry.
+          </p>
+          
+      </div>
+<!--       <img src="./static/imgs/pipeline.svg" alt="WildGaussians overview" style="width: 100%; margin: 1em auto 0.3em auto; display: block;" /> -->
+    </div>
+  </section>
+
+    
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-4">Results and comparisons</h2>
+      <p>
+        Here we display side-by-side low_videos comparing our method to top-performing baselines across different captured scenes. <br><br>
+        Select a scene and a baseline method below:
+      </p>
+      <br>
+         
+      <div class="tabs-widget">
+        <div class="tabs is-centered">
+          <ul class="is-marginless">
+            <li><a><b>Sedan</b></a></li>
+            <li><a><b>Gardenspheres</b></a></li>
+            <li><a><b>Garden</b></a></li>
+            <li><a><b>Truck</b></a></li>
+          </ul>
+        </div>
+        <div class="content has-text-centered is-size-7-mobile">
+          Interactive visualization. Hover or tap to move the split.
+        </div>
+        <div class="tabs-content">
+          <!-- Begin mazda. -->
+          <div>
+            <div class="tabs-widget">
+              <div class="tabs is-centered is-toggle is-small">
+                  
+                <ul class="is-marginless">
+                  <li><a>3DGS-DR vs. Ours</a></li>
+                  <li><a>3iGS vs. Ours</a></li>
+                  <li><a>GaussianShader vs. Ours</a></li>
+                  <li><a>(Normal) 3DGS-DR vs. Ours</a></li>
+                  <li><a>(Normal) GaussianShader vs. Ours</a></li>
+                </ul>
+              </div>
+              <div class="tabs-content">
+                <div class="video-comparison" data-label="3DGS-DR" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline muted
+                    src="./static/low_videos/3dgsdr_sedan_ours_sedan_30fps.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="3iGS" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline muted
+                    src="./static/low_videos/3igs_sedan_ours_sedan_30fps.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="GaussianShader" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline muted
+                    src="./static/low_videos/GaussianShader_sedan_ours_sedan_30fps.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="3DGS-DR" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline muted
+                    src="./static/low_videos/3dgsdr_sedan_ours_sedan_30fps_normal.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="GaussianShader" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline muted
+                    src="./static/low_videos/GaussianShader_sedan_ours_sedan_30fps_normal.mp4"></video>
+                  <canvas></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End mazda. -->
+            
+          <!-- Begin toaster. -->
+          <div>
+            <div class="tabs-widget">
+              <div class="tabs is-centered is-toggle is-small">
+                <ul class="is-marginless">
+                  <li><a>3DGS-DR vs. Ours</a></li>
+                  <li><a>3iGS vs. Ours</a></li>
+                  <li><a>GaussianShader vs. Ours</a></li>
+                  <li><a>(Normal) 3DGS-DR vs. Ours</a></li>
+                  <li><a>(Normal) GaussianShader vs. Ours</a></li>
+                </ul>
+              </div>
+              <div class="tabs-content">
+                Our method renders convincing reflections of the distant scene beyond the windows as well as the nearby paintings and bowl.
+                <div class="video-comparison" data-label="3DGS-DR" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline autoplay muted
+                    src="./static/low_videos/3dgsdr_gardenspheres_ours_gardenspheres_30fps.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="3iGS" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline autoplay muted
+                    src="./static/low_videos/3igs_gardenspheres_ours_gardenspheres_30fps.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="GaussianShader" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline autoplay muted
+                    src="./static/low_videos/GaussianShader_gardenspheres_ours_gardenspheres_30fps.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="3DGS-DR" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline autoplay muted
+                    src="./static/low_videos/3dgsdr_gardenspheres_ours_gardenspheres_30fps_normal.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="GaussianShader" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline autoplay muted
+                    src="./static/low_videos/GaussianShader_gardenspheres_ours_gardenspheres_30fps_normal.mp4"></video>
+                  <canvas></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End toaster. -->
+        
+        <!-- Begin toaster. -->
+          <div>
+            <div class="tabs-widget">
+              <div class="tabs is-centered is-toggle is-small">
+                <ul class="is-marginless">
+                  <li><a>3DGS-DR vs. Ours</a></li>
+                  <li><a>3iGS vs. Ours</a></li>
+                  <li><a>GaussianShader vs. Ours</a></li>
+                  <li><a>(Normal) 3DGS-DR vs. Ours</a></li>
+                  <li><a>(Normal) GaussianShader vs. Ours</a></li>
+                </ul>
+              </div>
+              <div class="tabs-content">
+                Our method renders convincing reflections of the distant scene beyond the windows as well as the nearby paintings and bowl.
+                <div class="video-comparison" data-label="3DGS-DR" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline autoplay muted
+                    src="./static/low_videos/3dgsdr_garden_ours_garden_30fps.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="3iGS" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline autoplay muted
+                    src="./static/low_videos/3igs_garden_ours_garden_30fps.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="GaussianShader" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline autoplay muted
+                    src="./static/low_videos/GaussianShader_garden_ours_garden_30fps.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="3DGS-DR" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline autoplay muted
+                    src="./static/low_videos/3dgsdr_garden_ours_garden_30fps_normal.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="GaussianShader" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline autoplay muted
+                    src="./static/low_videos/GaussianShader_garden_ours_garden_30fps_normal.mp4"></video>
+                  <canvas></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End toaster. -->
+            
+        <!-- Begin toaster. -->
+          <div>
+            <div class="tabs-widget">
+              <div class="tabs is-centered is-toggle is-small">
+                <ul class="is-marginless">
+                  <li><a>3DGS-DR vs. Ours</a></li>
+                  <li><a>3iGS vs. Ours</a></li>
+                  <li><a>GaussianShader vs. Ours</a></li>
+                  <li><a>(Normal) 3DGS-DR vs. Ours</a></li>
+                  <li><a>(Normal) GaussianShader vs. Ours</a></li>
+                </ul>
+              </div>
+              <div class="tabs-content">
+                Our method renders convincing reflections of the distant scene beyond the windows as well as the nearby paintings and bowl.
+                <div class="video-comparison" data-label="3DGS-DR" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline autoplay muted
+                    src="./static/low_videos/3dgsdr_truck_ours_truck_30fps.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="3iGS" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline autoplay muted
+                    src="./static/low_videos/3igs_truck_ours_truck_30fps.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="GaussianShader" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline autoplay muted
+                    src="./static/low_videos/GaussianShader_truck_ours_truck_30fps.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="3DGS-DR" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline autoplay muted
+                    src="./static/low_videos/3dgsdr_truck_ours_truck_30fps_normal.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="GaussianShader" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline autoplay muted
+                    src="./static/low_videos/GaussianShader_truck_ours_truck_30fps_normal.mp4"></video>
+                  <canvas></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End toaster. -->
+            
+        </div>
+          
+         </div>
+      </div>
+  </section>
+    
+    
+    
+    
+ <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-4">Ablation study</h2>
+      <p>
+        Here we display side-by-side low_videos comparing our full method to versions of our method where key components have been ablated. See more details in the paper.
+      </p>
+      <br>
+      <div class="tabs-widget">
+        <div class="tabs is-centered">
+          <ul class="is-marginless">
+            <li><a><b>Rendering</b></a></li>
+            <li><a><b>Mesh</b></a></li>
+          </ul>
+        </div>
+        <div class="content has-text-centered is-size-7-mobile">
+          Interactive visualization. Hover or tap to move the split.
+        </div>
+        <div class="tabs-content">
+          <!-- Begin mazda. -->
+          <div>
+            <div class="tabs-widget">
+              <div class="tabs is-centered is-toggle is-small">
+                <ul class="is-marginless">
+                  <li><a>w/o Deferred Shading</a></li>
+                  <li><a>w/o Directional Factorization</a></li>
+                </ul>
+              </div>
+              <div class="tabs-content">
+                Notice how our method synthesizes accurate reflections of the houses and plants that smoothly move over the car's surface, 
+                while baseline methods produce fuzzy reflections that fade in and out depending on the viewpoint.
+                <div class="video-comparison" data-label="w/o Deferred Shading" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline muted
+                    src="./static/low_videos/DS_rendering.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="w/o Directional Factorization" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline muted
+                    src="./static/low_videos/OP_rendering.mp4"></video>
+                  <canvas></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End mazda. -->
+            
+          <!-- Begin toaster. -->
+          <div>
+            <div class="tabs-widget">
+              <div class="tabs is-centered is-toggle is-small">
+                <ul class="is-marginless">
+                  <li><a>w/o Deferred Shading</a></li>
+                  <li><a>w/o Directional Factorization</a></li>
+                </ul>
+              </div>
+              <div class="tabs-content">
+                <div class="video-comparison" data-label="w/o Deferred Shading" data-label2="Ours">
+                  <video class="video" width=50% loop playsinline autoplay muted
+                    src="./static/low_videos/DS_mesh.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="w/o Directional Factorization" data-label2="Ours">
+                  <video class="video" width=50% loop playsinline autoplay muted
+                    src="./static/low_videos/OP_mesh.mp4"></video>
+                  <canvas></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End toaster. -->
+        </div>
+      </div>
+    </div>
+  </section>
+    
+    
+ <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-4">Shape Reconstruction</h2>
+      <p>
+        Here we display side-by-side low_videos comparing our method to top-performing baselines across different captured scenes. <br><br>
+        Select a scene and a baseline method below:
+      </p>
+      <br>
+      <div class="tabs-widget">
+        <div class="tabs is-centered">
+          <ul class="is-marginless">
+            <li><a><b>Bunny</b></a></li>
+            <li><a><b>Coral</b></a></li>
+            <li><a><b>Garden</b></a></li>
+            <li><a><b>Sedan</b></a></li>
+            <li><a><b>Truck</b></a></li>
+          </ul>
+        </div>
+        
+         <div class="content has-text-centered is-size-7-mobile">
+          Interactive visualization. Hover or tap to move the split.
+        </div>
+          
+        <div class="tabs-content">
+            
+            <div class="tabs-widget">
+              <div class="tabs-content">
+                  <video class="video" width=100% loop playsinline muted autoplay
+                    src="./static/low_videos/bunny2.mp4"></video>
+                  <canvas></canvas> 
+              </div>
+            </div>
+            
+            <div class="tabs-widget">
+              <div class="tabs-content">
+                  <video class="video" width=100% loop playsinline muted autoplay
+                    src="./static/low_videos/coral2.mp4"></video>
+                  <canvas></canvas> 
+              </div>
+            </div>
+            
+            <div class="tabs-widget">
+              <div class="tabs-content">
+                  <video class="video" width=100% loop playsinline muted autoplay
+                    src="./static/low_videos/garden2.mp4"></video>
+                  <canvas></canvas> 
+              </div>
+            </div>
+            
+            <div class="tabs-widget">
+              <div class="tabs-content">
+                  <video class="video" width=100% loop playsinline muted autoplay
+                    src="./static/low_videos/sedan2.mp4"></video>
+                  <canvas></canvas> 
+              </div>
+            </div>
+            
+            <div class="tabs-widget">
+              <div class="tabs-content">
+                  <video class="video" width=100% loop playsinline muted autoplay
+                    src="./static/low_videos/truck2.mp4"></video>
+                  <canvas></canvas> 
+              </div>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  </section>
+    
+    
+    
+    <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-4">Synthetic results</h2>
+      <p>
+        Here we display side-by-side low_videos comparing our method to top-performing baselines across different captured scenes. <br><br>
+        Select a scene and a baseline method below:
+      </p>
+      <br>
+      <div class="tabs-widget">
+        <div class="tabs is-centered">
+          <ul class="is-marginless">
+            <li><a><b>Toaster</b></a></li>
+            <li><a><b>Helmet</b></a></li>
+            <li><a><b>NeRF Synthetic</b></a></li>
+          </ul>
+        </div>
+        
+          <div class="content has-text-centered is-size-7-mobile">
+          Interactive visualization. Hover or tap to move the split.
+        </div>
+          
+        <div class="tabs-content">
+            
+            <div class="tabs-widget">
+              <div class="tabs-content">
+                  <video class="video" width=100% loop playsinline muted autoplay
+                    src="./static/low_videos/toaster.mp4"></video>
+                  <canvas></canvas> 
+              </div>
+            </div>
+            
+            <div class="tabs-widget">
+              <div class="tabs-content">
+                  <video class="video" width=100% loop playsinline muted autoplay
+                    src="./static/low_videos/helmet.mp4"></video>
+                  <canvas></canvas> 
+              </div>
+            </div>
+            
+            <div class="tabs-widget">
+              <div class="tabs-content">
+                  <video class="video" width=100% loop playsinline muted autoplay
+                    src="./static/low_videos/materials.mp4"></video>
+                  <canvas></canvas> 
+              </div>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  </section>
+    
+    
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-4"> Related works</h2>
+      <p>
+        <li><a href="https://arxiv.org/abs/2112.03907">Ref-NeRF: Structured View-Dependent Appearance for Neural Radiance Fields</a></li>
+        <li><a href="https://arxiv.org/abs/2311.17977">GaussianShader: 3D Gaussian Splatting with Shading Functions for Reflective Surfaces</a></li>
+        <li><a href="https://arxiv.org/abs/2408.03753">3iGS: Factorised Tensorial Illumination for 3D Gaussian Splatting</a></li>
+        <li><a href="https://arxiv.org/abs/2404.18454">3D Gaussian Splatting with Deferred Reflection</a></li>
+        <li><a href="https://arxiv.org/abs/2403.17888">2D Gaussian Splatting for Geometrically Accurate Radiance Fields</a></li>
+      </p>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+                This webpage is based on the project page for <a href="https://camp-nerf.github.io">CamP</a>. The video comparison tool is from the <a
+                href="https://dorverbin.github.io/refnerf/index.html">Ref-NeRF</a> project.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+      
+      
+</body>
+
+</html>
