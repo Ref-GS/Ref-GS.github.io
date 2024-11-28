@@ -38,7 +38,6 @@
       <div class="column has-text-centered">
 
         <h1 class="title is-1 publication-title">
-<!--             <img src='./static/imgs/logo.png' width=4%>  -->
             <font color="#f72585">R</font><font color="#b5179e">e</font><font color="#7209b7">f</font><font color="#560bad">-</font><font color="#480ca8">G</font><font color="#3a0ca3">S</font>
             : Directional Factorization for <br> 2D Gaussian Splatting
         </h1>
@@ -57,8 +56,6 @@
 
   <section class="section">
     <div class="container is-max-desktop">
-<!--       <img src="./static/imgs/teaser.svg" alt="WildGaussians overview" style="width: 100%; margin: 1em auto 0.3em auto; display: block;" /> -->
-      <br>
       <!-- Abstract. -->
       <h2 class="title is-3">Abstract</h2>
       <div class="content has-text-justified">
@@ -67,7 +64,6 @@
           </p>
           
       </div>
-<!--       <img src="./static/imgs/pipeline.svg" alt="WildGaussians overview" style="width: 100%; margin: 1em auto 0.3em auto; display: block;" /> -->
     </div>
   </section>
 
@@ -76,7 +72,7 @@
     <div class="container is-max-desktop">
       <h2 class="title is-4">Results and comparisons</h2>
       <p>
-        Here we display side-by-side low_videos comparing our method to top-performing baselines across different captured scenes. <br><br>
+        Here we demostrate side-by-side videos comparing our method to top-performing baselines across different captured scenes. <br><br>
         Select a scene and a baseline method below:
       </p>
       <br>
@@ -94,7 +90,7 @@
           Interactive visualization. Hover or tap to move the split.
         </div>
         <div class="tabs-content">
-          <!-- Begin mazda. -->
+          <!-- Begin Sedan. -->
           <div>
             <div class="tabs-widget">
               <div class="tabs is-centered is-toggle is-small">
@@ -108,6 +104,8 @@
                 </ul>
               </div>
               <div class="tabs-content">
+                  Note how our method synthesizes accurate reflections of trees that move smoothly across the car surface and windows, 
+                  while Gaussian-based methods produce blurry reflections that appear and disappear inconsistently with changes in viewpoint.
                 <div class="video-comparison" data-label="3DGS-DR" data-label2="Ours">
                   <video class="video" width=100% loop playsinline muted
                     src="./static/low_videos/3dgsdr_sedan_ours_sedan_30fps.mp4"></video>
@@ -136,9 +134,9 @@
               </div>
             </div>
           </div>
-          <!-- End mazda. -->
+          <!-- End Sedan. -->
             
-          <!-- Begin toaster. -->
+          <!-- Begin Gardenspheres. -->
           <div>
             <div class="tabs-widget">
               <div class="tabs is-centered is-toggle is-small">
@@ -151,7 +149,8 @@
                 </ul>
               </div>
               <div class="tabs-content">
-                Our method renders convincing reflections of the distant scene beyond the windows as well as the nearby paintings and bowl.
+                Note that our model renders reflections with more high-frequency details and is capable of producing realistic near-field content reflections. 
+                These include clear reflections of tree branches and buildings in the sphere.
                 <div class="video-comparison" data-label="3DGS-DR" data-label2="Ours">
                   <video class="video" width=100% loop playsinline autoplay muted
                     src="./static/low_videos/3dgsdr_gardenspheres_ours_gardenspheres_30fps.mp4"></video>
@@ -180,9 +179,9 @@
               </div>
             </div>
           </div>
-          <!-- End toaster. -->
+          <!-- End Gardenspheres. -->
         
-        <!-- Begin toaster. -->
+        <!-- Begin Garden. -->
           <div>
             <div class="tabs-widget">
               <div class="tabs is-centered is-toggle is-small">
@@ -195,7 +194,7 @@
                 </ul>
               </div>
               <div class="tabs-content">
-                Our method renders convincing reflections of the distant scene beyond the windows as well as the nearby paintings and bowl.
+                In this relatively diffuse scene with no significant view-dependent appearance changes, we achieved a successful reconstruction of the geometries of the "reflective table center".
                 <div class="video-comparison" data-label="3DGS-DR" data-label2="Ours">
                   <video class="video" width=100% loop playsinline autoplay muted
                     src="./static/low_videos/3dgsdr_garden_ours_garden_30fps.mp4"></video>
@@ -224,9 +223,9 @@
               </div>
             </div>
           </div>
-          <!-- End toaster. -->
+          <!-- End Garden. -->
             
-        <!-- Begin toaster. -->
+        <!-- Begin Truck. -->
           <div>
             <div class="tabs-widget">
               <div class="tabs is-centered is-toggle is-small">
@@ -239,7 +238,7 @@
                 </ul>
               </div>
               <div class="tabs-content">
-                Our method renders convincing reflections of the distant scene beyond the windows as well as the nearby paintings and bowl.
+                Although semi-transparent but reflective surfaces (such as windows) present certain challenges for our method, it is still capable of simulating convincing reflection effects on windshields.
                 <div class="video-comparison" data-label="3DGS-DR" data-label2="Ours">
                   <video class="video" width=100% loop playsinline autoplay muted
                     src="./static/low_videos/3dgsdr_truck_ours_truck_30fps.mp4"></video>
@@ -268,7 +267,7 @@
               </div>
             </div>
           </div>
-          <!-- End toaster. -->
+          <!-- End Truck. -->
             
         </div>
           
@@ -283,7 +282,8 @@
     <div class="container is-max-desktop">
       <h2 class="title is-4">Ablation study</h2>
       <p>
-        Here we display side-by-side low_videos comparing our full method to versions of our method where key components have been ablated. See more details in the paper.
+        Here we demostrate side-by-side videos comparing our full method to versions of our method where key components have been ablated. See more details in the paper.<br><br>
+        Select an ablation below:
       </p>
       <br>
       <div class="tabs-widget">
@@ -293,10 +293,12 @@
             <li><a><b>Mesh</b></a></li>
           </ul>
         </div>
+          
         <div class="content has-text-centered is-size-7-mobile">
           Interactive visualization. Hover or tap to move the split.
         </div>
         <div class="tabs-content">
+            
           <!-- Begin mazda. -->
           <div>
             <div class="tabs-widget">
@@ -307,8 +309,8 @@
                 </ul>
               </div>
               <div class="tabs-content">
-                Notice how our method synthesizes accurate reflections of the houses and plants that smoothly move over the car's surface, 
-                while baseline methods produce fuzzy reflections that fade in and out depending on the viewpoint.
+                (w/o Deferred Shading) Applying deferred shading provides more accurate specular reflections and better surface reconstruction quality.
+                (w/o Directional Factorization) Inter-reflections cannot be reconstructed using only the far-field feature.
                 <div class="video-comparison" data-label="w/o Deferred Shading" data-label2="Ours">
                   <video class="video" width=100% loop playsinline muted
                     src="./static/low_videos/DS_rendering.mp4"></video>
@@ -334,6 +336,8 @@
                 </ul>
               </div>
               <div class="tabs-content">
+                (w/o Deferred Shading) Applying deferred shading provides more accurate specular reflections and better surface reconstruction quality.
+                (w/o Directional Factorization) Inter-reflections cannot be reconstructed using only the far-field feature.
                 <div class="video-comparison" data-label="w/o Deferred Shading" data-label2="Ours">
                   <video class="video" width=50% loop playsinline autoplay muted
                     src="./static/low_videos/DS_mesh.mp4"></video>
@@ -358,15 +362,17 @@
     <div class="container is-max-desktop">
       <h2 class="title is-4">Shape Reconstruction</h2>
       <p>
-        Here we display side-by-side low_videos comparing our method to top-performing baselines across different captured scenes. <br><br>
-        Select a scene and a baseline method below:
+        Here we demostrate side-by-side videos comparing our method to top-performing baselines across different captured scenes. <br><br>
+        Select a reconstruction below:
       </p>
       <br>
       <div class="tabs-widget">
         <div class="tabs is-centered">
           <ul class="is-marginless">
             <li><a><b>Bunny</b></a></li>
+            <li><a><b>Vase</b></a></li>
             <li><a><b>Coral</b></a></li>
+            <li><a><b>Maneki</b></a></li>
             <li><a><b>Garden</b></a></li>
             <li><a><b>Sedan</b></a></li>
             <li><a><b>Truck</b></a></li>
@@ -390,7 +396,23 @@
             <div class="tabs-widget">
               <div class="tabs-content">
                   <video class="video" width=100% loop playsinline muted autoplay
+                    src="./static/low_videos/vase2.mp4"></video>
+                  <canvas></canvas> 
+              </div>
+            </div>
+            
+            <div class="tabs-widget">
+              <div class="tabs-content">
+                  <video class="video" width=100% loop playsinline muted autoplay
                     src="./static/low_videos/coral2.mp4"></video>
+                  <canvas></canvas> 
+              </div>
+            </div>
+            
+            <div class="tabs-widget">
+              <div class="tabs-content">
+                  <video class="video" width=100% loop playsinline muted autoplay
+                    src="./static/low_videos/maneki2.mp4"></video>
                   <canvas></canvas> 
               </div>
             </div>
@@ -430,7 +452,7 @@
     <div class="container is-max-desktop">
       <h2 class="title is-4">Synthetic results</h2>
       <p>
-        Here we display side-by-side low_videos comparing our method to top-performing baselines across different captured scenes. <br><br>
+        Here we demostrate side-by-side videos comparing our method to top-performing baselines across different captured scenes. <br><br>
         Select a scene and a baseline method below:
       </p>
       <br>
@@ -439,6 +461,8 @@
           <ul class="is-marginless">
             <li><a><b>Toaster</b></a></li>
             <li><a><b>Helmet</b></a></li>
+            <li><a><b>Car</b></a></li>
+            <li><a><b>Ball</b></a></li>
             <li><a><b>NeRF Synthetic</b></a></li>
           </ul>
         </div>
@@ -468,6 +492,22 @@
             <div class="tabs-widget">
               <div class="tabs-content">
                   <video class="video" width=100% loop playsinline muted autoplay
+                    src="./static/low_videos/car.mp4"></video>
+                  <canvas></canvas> 
+              </div>
+            </div>
+            
+            <div class="tabs-widget">
+              <div class="tabs-content">
+                  <video class="video" width=100% loop playsinline muted autoplay
+                    src="./static/low_videos/ball.mp4"></video>
+                  <canvas></canvas> 
+              </div>
+            </div>
+            
+            <div class="tabs-widget">
+              <div class="tabs-content">
+                  <video class="video" width=100% loop playsinline muted autoplay
                     src="./static/low_videos/materials.mp4"></video>
                   <canvas></canvas> 
               </div>
@@ -483,17 +523,17 @@
     <div class="container is-max-desktop">
       <h2 class="title is-4"> Related works</h2>
       <p>
-        <li><a href="https://arxiv.org/abs/2112.03907">Ref-NeRF: Structured View-Dependent Appearance for Neural Radiance Fields</a></li>
-        <li><a href="https://arxiv.org/abs/2311.17977">GaussianShader: 3D Gaussian Splatting with Shading Functions for Reflective Surfaces</a></li>
+        <li><a href="https://dorverbin.github.io/refnerf/">Ref-NeRF: Structured View-Dependent Appearance for Neural Radiance Fields</a></li>
+        <li><a href="https://asparagus15.github.io/GaussianShader.github.io/">GaussianShader: 3D Gaussian Splatting with Shading Functions for Reflective Surfaces</a></li>
         <li><a href="https://arxiv.org/abs/2408.03753">3iGS: Factorised Tensorial Illumination for 3D Gaussian Splatting</a></li>
-        <li><a href="https://arxiv.org/abs/2404.18454">3D Gaussian Splatting with Deferred Reflection</a></li>
-        <li><a href="https://arxiv.org/abs/2403.17888">2D Gaussian Splatting for Geometrically Accurate Radiance Fields</a></li>
+        <li><a href="https://gapszju.github.io/3DGS-DR/">3D Gaussian Splatting with Deferred Reflection</a></li>
+        <li><a href="https://surfsplatting.github.io/">2D Gaussian Splatting for Geometrically Accurate Radiance Fields</a></li>
       </p>
     </div>
   </section>
 
 
-  <footer class="footer">
+<!--   <footer class="footer">
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-8">
@@ -505,7 +545,8 @@
         </div>
       </div>
     </div>
-  </footer>
+  </footer> -->
+    
       
       
 </body>
