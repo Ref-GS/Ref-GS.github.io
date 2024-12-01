@@ -383,8 +383,9 @@
                 </ul>
               </div>
               <div class="tabs-content">
-                (w/o Deferred Shading) Applying deferred shading provides more accurate specular reflections and better surface reconstruction quality.
-                (w/o Directional Factorization) Inter-reflections cannot be reconstructed using only the far-field feature.
+                Using the G-buffer instead of Sph-Mip (i.e. w/o Sph-Mip Encoding) or without deferred shading (i.e., w/o Deferred Shading), sharp details, such as tree branches reflected in the sphere, are not accurately reconstructed. 
+                It is necessary to use multi-level spherical feature grid strategies (i.e., w/o Mipmap), otherwise rough surfaces will fail to be reconstructed and artifacts will appear during rendering. 
+                Additionally, directional factorization (i.e., w/o Directional Factorization) is essential for modeling near-field inter-reflections.
                 <div class="video-comparison" data-label="w/o Deferred Shading" data-label2="Ours">
                   <video class="video" width=50% loop playsinline autoplay muted
                     src="./static/low_videos/DS_mesh.mp4"></video>
@@ -393,6 +394,16 @@
                 <div class="video-comparison" data-label="w/o Directional Factorization" data-label2="Ours">
                   <video class="video" width=50% loop playsinline autoplay muted
                     src="./static/low_videos/OP_mesh.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="w/o Mipmap" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline muted
+                    src="./static/low_videos/Mip_mesh.mp4"></video>
+                  <canvas></canvas>
+                </div>
+                <div class="video-comparison" data-label="w/o Sph-Mip Encoding" data-label2="Ours">
+                  <video class="video" width=100% loop playsinline muted
+                    src="./static/low_videos/Far_mesh.mp4"></video>
                   <canvas></canvas>
                 </div>
               </div>
